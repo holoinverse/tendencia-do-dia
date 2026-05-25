@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tendência do Dia</title>
+
+  <style>
+    body{
+      margin:0;
+      padding:40px 20px;
+      background:#efe3cc;
+      font-family:Georgia, serif;
+      text-align:center;
+      color:#3a2d1f;
+    }
+
+    h1{
+      font-size:42px;
+      margin-bottom:10px;
+    }
+
+    p{
+      font-size:18px;
+      opacity:0.8;
+    }
+
+    button{
+      margin-top:25px;
+      padding:16px 28px;
+      border:none;
+      border-radius:12px;
+      background:#3a2d1f;
+      color:white;
+      font-size:18px;
+      cursor:pointer;
+    }
+
+    button:hover{
+      opacity:0.9;
+    }
+
+    #card{
+      margin-top:40px;
+    }
+
+    #card img{
+      width:320px;
+      max-width:90%;
+      border-radius:18px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Tendência do Dia</h1>
+
+  <p>Sorteie uma carta para representar sua energia de hoje.</p>
+
+  <button onclick="sortearCarta()">
+    Sortear Carta
+  </button>
+
+  <div id="card"></div>
+
+  <script>
+
+    const cartas = [
+      "01_clareza.png",
+      "02_alivio.png",
+      "03_descanso.png",
+      "04_conexao.png",
+      "05_fluidez.png",
+      "06_abertura.png",
+      "07_estabilidade.png",
+      "08_alinhamento_print_ready.png",
+      "09_animo.png",
+      "10_apoio.png",
+      "11_observacao.png",
+      "12_sensibilidade.png"
+    ];
+
+    function sortearCarta(){
+
+      const hoje = new Date().toDateString();
+
+      const cartaSalva = localStorage.getItem("cartaDoDia");
+      const dataSalva = localStorage.getItem("dataCarta");
+
+      if(dataSalva === hoje && cartaSalva){
+
+        mostrarCarta(cartaSalva);
+        return;
+      }
+
+      const numero = Math.floor(Math.random() * cartas.length);
+
+      const carta = cartas[numero];
+
+      localStorage.setItem("cartaDoDia", carta);
+      localStorage.setItem("dataCarta", hoje);
+
+      mostrarCarta(carta);
+    }
+
+    function mostrarCarta(nome){
+
+      document.getElementById("card").innerHTML =
+      `<img src="${nome}" alt="Carta do dia">`;
+    }
+
+  </script>
+
+</body>
+</html>
