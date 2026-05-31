@@ -158,189 +158,187 @@
 
   <script>
         const cartas = [
-      {
-        imagem:"01_clareza.png",
-        titulo:"CLAREZA",
-        significado:"Hoje há tendência de enxergar algo com mais lucidez. O que estava confuso pode começar a ganhar forma. Observe os sinais simples, as conversas diretas e as percepções que surgem sem esforço."
-      },
-      {
-        imagem:"02_alivio.png",
-        titulo:"ALÍVIO",
-        significado:"Algo que estava pesado pode começar a se dissolver. Hoje favorece respirar, soltar tensões desnecessárias e perceber que nem tudo precisa ser carregado com a mesma intensidade."
-      },
-      {
-        imagem:"03_descanso.png",
-        titulo:"DESCANSO",
-        significado:"Seu corpo e sua mente podem pedir pausa. Hoje a tendência é reduzir o ritmo, recuperar energia e respeitar limites antes que o cansaço se transforme em exaustão."
-      },
-      {
-        imagem:"04_conexao.png",
-        titulo:"CONEXÃO",
-        significado:"Hoje pode haver abertura para aproximações, conversas ou reconexões importantes. Observe quem se faz presente de forma simples e quem desperta uma sensação real de troca."
-      },
-      {
-        imagem:"05_fluidez.png",
-        titulo:"FLUIDEZ",
-        significado:"O dia favorece menos controle e mais adaptação. Algo pode fluir melhor quando você deixa de forçar um caminho específico e permite que as coisas encontrem um ritmo mais natural."
-      },
-      {
-        imagem:"06_abertura.png",
-        titulo:"ABERTURA",
-        significado:"Uma possibilidade pode se revelar. Hoje há tendência de portas simbólicas se abrirem, seja através de uma conversa, uma ideia, uma decisão ou uma mudança de postura."
-      },
-      {
-        imagem:"07_estabilidade.png",
-        titulo:"ESTABILIDADE",
-        significado:"Hoje pede base, presença e organização. Antes de avançar, observe o que precisa ser sustentado com mais calma. A estabilidade pode vir de escolhas simples e consistentes."
-      },
-      {
-        imagem:"08_alinhamento_print_ready.png",
-        titulo:"ALINHAMENTO",
-        significado:"Algo pode se reorganizar internamente. Hoje favorece perceber se suas ações, palavras e decisões estão caminhando na mesma direção que suas necessidades reais."
-      },
-      {
-        imagem:"09_animo.png",
-        titulo:"ÂNIMO",
-        significado:"Uma energia mais viva pode surgir ao longo do dia. Não precisa ser euforia. Pode ser apenas um pequeno impulso, uma vontade discreta de tentar, organizar, responder ou continuar."
-      },
-      {
-        imagem:"10_apoio.png",
-        titulo:"APOIO",
-        significado:"Hoje pode ser importante reconhecer onde existe suporte. Às vezes o apoio aparece em uma presença, uma palavra, uma pausa compartilhada ou na decisão de não enfrentar tudo sozinho."
-      },
-      {
-        imagem:"11_observacao.png",
-        titulo:"OBSERVAÇÃO",
-        significado:"Antes de reagir, observe. Hoje a tendência favorece perceber detalhes, padrões e intenções que passam despercebidos quando você age no automático."
-      },
-      {
-        imagem:"12_sensibilidade.png",
-        titulo:"SENSIBILIDADE",
-        significado:"Seu campo emocional pode estar mais permeável. Hoje pede cuidado com ambientes, palavras e excessos. Sensibilidade não é fraqueza; é percepção ampliada."
-      }
-          ,
-      {
-        imagem:"13_reflexao.png",
-        titulo:"REFLEXÃO",
-        significado:"O dia pode trazer necessidade de olhar para dentro antes de decidir. Nem toda resposta surge na pressa. Algumas compreensões aparecem quando você permite silêncio e distância."
-      },
-      {
-        imagem:"14_transicao.png",
-        titulo:"TRANSIÇÃO",
-        significado:"Algo pode estar mudando de fase. Hoje talvez você esteja entre o que já não serve mais e o que ainda não se consolidou. Respeite esse intervalo."
-      },
-      {
-        imagem:"15_expectativa.png",
-        titulo:"EXPECTATIVA",
-        significado:"Atenção ao que você projeta sobre pessoas, respostas ou resultados. Hoje pode mostrar a diferença entre esperar com presença e se prender a uma cena criada pela ansiedade."
-      },
-      {
-        imagem:"16_movimento.png",
-        titulo:"MOVIMENTO",
-        significado:"Algo pede deslocamento, ação ou mudança de postura. O movimento de hoje pode ser pequeno, mas suficiente para tirar uma situação da estagnação."
-      },
-      {
-        imagem:"17_mudanca.png",
-        titulo:"MUDANÇA",
-        significado:"Hoje pode marcar uma virada sutil. A mudança talvez não venha como ruptura, mas como percepção, ajuste ou escolha diferente diante de algo conhecido."
-      },
-      {
-        imagem:"18_percepcao.png",
-        titulo:"PERCEPÇÃO",
-        significado:"Sua leitura sobre uma situação pode se aprofundar. Hoje favorece perceber o que está por trás das aparências, especialmente em conversas, decisões e relações."
-      },
-      {
-        imagem:"19_silencio.png",
-        titulo:"SILÊNCIO",
-        significado:"Nem tudo precisa ser explicado hoje. O silêncio pode funcionar como proteção, pausa ou maturidade. Observe onde falar menos pode revelar mais."
-      },
-      {
-        imagem:"20_ajuda.png",
-        titulo:"AJUDA",
-        significado:"Hoje pode ser importante pedir, aceitar ou oferecer ajuda. A tendência não é fraqueza, mas reconhecimento de que algumas travessias ficam mais claras quando não são feitas sozinho."
-      },
-      {
-        imagem:"21_sobrecarga.png",
-        titulo:"SOBRECARGA",
-        significado:"Algo pode estar ocupando espaço demais. Hoje pede atenção ao excesso de tarefas, responsabilidades, pensamentos ou demandas emocionais. Nem tudo precisa ser resolvido agora."
-      },
-      {
-        imagem:"22_pressao.png",
-        titulo:"PRESSÃO",
-        significado:"Você pode sentir cobrança externa ou interna. Antes de responder no impulso, observe de onde vem essa pressão e se ela realmente precisa determinar suas escolhas."
-      },
-      {
-        imagem:"23_confusao.png",
-        titulo:"CONFUSÃO",
-        significado:"O dia pode trazer sinais misturados, dúvidas ou dificuldade de escolher direção. Evite decisões apressadas. Às vezes a clareza vem depois que o excesso de vozes diminui."
-      },
-      {
-        imagem:"24_desentendimento.png",
-        titulo:"DESENTENDIMENTO",
-        significado:"Hoje pode haver ruídos em conversas, interpretações ou expectativas. Procure escutar o que está sendo dito e também o que está sendo projetado."
-      }
-          ,
-{
-  imagem:"25_cansaco.png",
-  titulo:"CANSAÇO",
-  significado:"Seu ritmo pode estar acima do que sua energia consegue sustentar. Hoje favorece reconhecer limites e reduzir o peso que vem sendo carregado."
-},
-{
-  imagem:"26_distancia.png",
-  titulo:"DISTÂNCIA",
-  significado:"Pode haver afastamentos, desencontros ou necessidade de espaço. Nem toda distância representa perda; às vezes ela permite enxergar melhor."
-},
-{
-  imagem:"27_impulsividade.png",
-  titulo:"IMPULSIVIDADE",
-  significado:"Hoje pede atenção às reações rápidas. Antes de responder, comprar, decidir ou confrontar alguém, respire e observe o que realmente está motivando a ação."
-},
-{
-  imagem:"28_frustracao.png",
-  titulo:"FRUSTRAÇÃO",
-  significado:"Algo pode não acontecer como esperado. Em vez de lutar contra isso, observe o que a situação está revelando sobre expectativas e necessidades."
-},
-{
-  imagem:"29_ansiedade.png",
-  titulo:"ANSIEDADE",
-  significado:"A mente pode tentar viver o futuro antes da hora. Hoje favorece retornar ao presente, ao corpo e ao que realmente está acontecendo agora."
-},
-{
-  imagem:"30_inseguranca.png",
-  titulo:"INSEGURANÇA",
-  significado:"Dúvidas sobre si mesmo ou sobre uma decisão podem surgir. Procure diferenciar riscos reais de medos criados pela imaginação."
-},
-{
-  imagem:"31_mal-estar.png",
-  titulo:"MAL-ESTAR",
-  significado:"Algo pode parecer desconfortável sem motivo evidente. Observe ambientes, relações e situações que drenam sua energia ou criam tensão."
-},
-{
-  imagem:"32_desorganizacao.png",
-  titulo:"DESORGANIZAÇÃO",
-  significado:"Hoje pode trazer dispersão ou excesso de estímulos. Pequenos ajustes e prioridades claras tendem a gerar mais resultado do que tentar resolver tudo."
-},
-{
-  imagem:"33_instabilidade.png",
-  titulo:"INSTABILIDADE",
-  significado:"Mudanças de humor, cenário ou direção podem ocorrer. O melhor apoio hoje é encontrar algo simples que funcione como ponto de equilíbrio."
-},
-{
-  imagem:"34_bloqueio.png",
-  titulo:"BLOQUEIO",
-  significado:"Algo pode parecer travado ou sem avanço. Nem sempre a saída é insistir mais. Às vezes é preciso mudar a abordagem ou esperar mais clareza."
-},
-{
-  imagem:"35_esgotamento.png",
-  titulo:"ESGOTAMENTO",
-  significado:"O corpo e a mente podem estar pedindo recuperação profunda. Hoje favorece reconhecer sinais de excesso antes que eles se tornem mais difíceis de ignorar."
-},
-{
-  imagem:"36_desanimo.png",
-  titulo:"DESÂNIMO",
-  significado:"A motivação pode estar reduzida. Em vez de exigir grandes movimentos, procure apenas dar o próximo passo possível."
-}
-        ];
+  {
+    imagem:"01_clareza.png",
+    titulo:"CLAREZA",
+    significado:"Hoje pode surgir uma compreensão, informação ou percepção que ajude a esclarecer algo que vinha parecendo confuso. Observe situações que tragam mais lucidez ao longo do dia."
+  },
+  {
+    imagem:"02_alivio.png",
+    titulo:"ALÍVIO",
+    significado:"Hoje pode haver tendência de algo parecer menos pesado. Uma tensão, preocupação ou cobrança pode perder força, permitindo mais respiro diante de uma situação."
+  },
+  {
+    imagem:"03_descanso.png",
+    titulo:"DESCANSO",
+    significado:"Hoje pode surgir necessidade de pausa, recolhimento ou recuperação. Observe se o corpo, a mente ou as circunstâncias pedem menos esforço e mais preservação de energia."
+  },
+  {
+    imagem:"04_conexao.png",
+    titulo:"CONEXÃO",
+    significado:"Hoje pode haver tendência a aproximações, conversas ou vínculos que se fortalecem. Observe quem se faz presente e quais trocas parecem mais verdadeiras."
+  },
+  {
+    imagem:"05_fluidez.png",
+    titulo:"FLUIDEZ",
+    significado:"Hoje pode haver tendência de algo fluir com mais naturalidade. Situações que estavam rígidas podem encontrar um caminho mais leve, especialmente quando há menos controle."
+  },
+  {
+    imagem:"06_abertura.png",
+    titulo:"ABERTURA",
+    significado:"Hoje pode surgir uma possibilidade, convite, ideia ou mudança de percepção. Observe portas simbólicas que se apresentam, mesmo que pareçam pequenas no início."
+  },
+  {
+    imagem:"07_estabilidade.png",
+    titulo:"ESTABILIDADE",
+    significado:"Hoje pode haver tendência de buscar mais base, segurança ou organização. Situações podem pedir escolhas mais firmes, simples e sustentáveis."
+  },
+  {
+    imagem:"08_alinhamento_print_ready.png",
+    titulo:"ALINHAMENTO",
+    significado:"Hoje pode haver tendência de algo se encaixar melhor. Observe se decisões, conversas ou percepções começam a apontar para uma direção mais coerente."
+  },
+  {
+    imagem:"09_animo.png",
+    titulo:"ÂNIMO",
+    significado:"Hoje pode surgir um pequeno impulso de energia, motivação ou vontade de continuar. Não precisa ser algo grande; às vezes o ânimo aparece em movimentos simples."
+  },
+  {
+    imagem:"10_apoio.png",
+    titulo:"APOIO",
+    significado:"Hoje pode haver tendência de apoio, ajuda ou presença significativa. Observe se alguém, alguma situação ou até uma decisão interna oferece mais sustentação."
+  },
+  {
+    imagem:"11_observacao.png",
+    titulo:"OBSERVAÇÃO",
+    significado:"Hoje pode haver tendência de perceber detalhes importantes antes de agir. Observe mais, reaja menos e preste atenção aos sinais sutis das situações."
+  },
+  {
+    imagem:"12_sensibilidade.png",
+    titulo:"SENSIBILIDADE",
+    significado:"Hoje pode haver maior sensibilidade emocional, energética ou relacional. Observe ambientes, palavras e interações que possam afetar você com mais intensidade."
+  },
+  {
+    imagem:"13_reflexao.png",
+    titulo:"REFLEXÃO",
+    significado:"Hoje pode surgir necessidade de olhar para dentro ou reconsiderar algo. Situações do dia podem pedir mais pausa, análise e escuta interna antes de uma resposta."
+  },
+  {
+    imagem:"14_transicao.png",
+    titulo:"TRANSIÇÃO",
+    significado:"Hoje pode haver tendência de mudança de fase, virada sutil ou passagem entre dois estados. Observe o que parece estar deixando de ser como antes."
+  },
+  {
+    imagem:"15_expectativa.png",
+    titulo:"EXPECTATIVA",
+    significado:"Hoje pode haver tendência de esperar respostas, sinais ou confirmações. Observe se a expectativa ajuda a manter esperança ou se começa a gerar ansiedade."
+  },
+  {
+    imagem:"16_movimento.png",
+    titulo:"MOVIMENTO",
+    significado:"Hoje pode haver tendência de deslocamento, ação ou mudança de postura. Algo pode pedir movimento, mesmo que seja pequeno ou apenas interno."
+  },
+  {
+    imagem:"17_mudanca.png",
+    titulo:"MUDANÇA",
+    significado:"Hoje pode surgir uma mudança de percepção, direção ou circunstância. Observe situações que indiquem que algo novo está pedindo espaço."
+  },
+  {
+    imagem:"18_percepcao.png",
+    titulo:"PERCEPÇÃO",
+    significado:"Hoje pode haver tendência de perceber algo além do óbvio. Observe sinais, sensações e detalhes que ajudem a compreender melhor uma situação."
+  },
+  {
+    imagem:"19_silencio.png",
+    titulo:"SILÊNCIO",
+    significado:"Hoje pode haver tendência ao silêncio, recolhimento ou ausência de respostas imediatas. Observe o que se revela quando há menos fala e mais escuta."
+  },
+  {
+    imagem:"20_ajuda.png",
+    titulo:"AJUDA",
+    significado:"Hoje pode surgir necessidade de pedir, oferecer ou aceitar ajuda. Situações podem mostrar que nem tudo precisa ser atravessado sozinho."
+  },
+  {
+    imagem:"21_sobrecarga.png",
+    titulo:"SOBRECARGA",
+    significado:"Hoje pode haver tendência ao excesso de tarefas, responsabilidades ou estímulos. Observe onde algo começa a ocupar mais espaço do que deveria."
+  },
+  {
+    imagem:"22_pressao.png",
+    titulo:"PRESSÃO",
+    significado:"Hoje pode haver tendência a cobranças externas ou internas. Observe situações em que você se sinta pressionado a responder, decidir ou agir antes de estar pronto."
+  },
+  {
+    imagem:"23_confusao.png",
+    titulo:"CONFUSÃO",
+    significado:"Hoje pode haver tendência a dúvidas, informações misturadas ou dificuldade de escolher direção. Observe se muitas vozes, opções ou pensamentos estão interferindo na clareza."
+  },
+  {
+    imagem:"24_desentendimento.png",
+    titulo:"DESENTENDIMENTO",
+    significado:"Hoje pode haver tendência a ruídos de comunicação, interpretações equivocadas ou expectativas diferentes entre as pessoas. Observe conversas que possam gerar mal-entendidos."
+  },
+  {
+    imagem:"25_cansaco.png",
+    titulo:"CANSAÇO",
+    significado:"Hoje pode haver tendência ao desgaste, excesso de esforço ou sensação de peso acumulado. Observe situações que exigem mais energia do que o habitual."
+  },
+  {
+    imagem:"26_distancia.png",
+    titulo:"DISTÂNCIA",
+    significado:"Hoje pode haver tendência a afastamento, silêncio ou sensação de separação. Observe se alguém ou algo parece mais distante, física ou emocionalmente."
+  },
+  {
+    imagem:"27_impulsividade.png",
+    titulo:"IMPULSIVIDADE",
+    significado:"Hoje pode haver tendência a reações rápidas, decisões apressadas ou falas impulsivas. Observe antes de agir para não responder apenas ao momento."
+  },
+  {
+    imagem:"28_frustracao.png",
+    titulo:"FRUSTRAÇÃO",
+    significado:"Hoje pode haver tendência de algo não sair como esperado. Observe onde expectativas, planos ou desejos encontram resistência ou precisam ser reajustados."
+  },
+  {
+    imagem:"29_ansiedade.png",
+    titulo:"ANSIEDADE",
+    significado:"Hoje pode haver tendência à antecipação, preocupação excessiva ou pensamentos voltados para o futuro. Observe quando a mente tentar acelerar além do presente."
+  },
+  {
+    imagem:"30_inseguranca.png",
+    titulo:"INSEGURANÇA",
+    significado:"Hoje pode haver tendência a dúvidas sobre si mesmo, sobre uma decisão ou sobre o caminho a seguir. Observe se o medo está ampliando a situação."
+  },
+  {
+    imagem:"31_mal-estar.png",
+    titulo:"MAL-ESTAR",
+    significado:"Hoje pode haver tendência a desconfortos físicos, emocionais ou energéticos. Observe ambientes, relações ou situações que possam gerar tensão ou incômodo."
+  },
+  {
+    imagem:"32_desorganizacao.png",
+    titulo:"DESORGANIZAÇÃO",
+    significado:"Hoje pode haver tendência à dispersão, confusão prática ou excesso de coisas fora do lugar. Observe onde uma pequena organização pode trazer mais clareza."
+  },
+  {
+    imagem:"33_instabilidade.png",
+    titulo:"INSTABILIDADE",
+    significado:"Hoje pode haver tendência a oscilações, incertezas ou sensação de pouca firmeza. Observe onde falta base antes de tomar decisões importantes."
+  },
+  {
+    imagem:"34_bloqueio.png",
+    titulo:"BLOQUEIO",
+    significado:"Hoje pode haver tendência de algo parecer travado, lento ou sem avanço. Observe se o bloqueio pede pausa, nova abordagem ou mais tempo."
+  },
+  {
+    imagem:"35_esgotamento.png",
+    titulo:"ESGOTAMENTO",
+    significado:"Hoje pode haver tendência de energia no limite, cansaço profundo ou necessidade de recuperação. Observe sinais de excesso antes que se intensifiquem."
+  },
+  {
+    imagem:"36_desanimo.png",
+    titulo:"DESÂNIMO",
+    significado:"Hoje pode haver tendência à baixa motivação, falta de impulso ou vontade de pausar. Observe se o dia pede menos cobrança e movimentos menores."
+  }
+];
         const botao = document.getElementById("drawButton");
     const cardArea = document.getElementById("card");
 
