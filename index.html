@@ -149,7 +149,7 @@
       Quanto mais consciência você tem, maior é sua capacidade de mudar a direção das coisas.
     </p>
 
-    <button id="drawButton" onclick="sortearCarta()">Sortear Carta</button>
+   <button id="drawButton" onclick="sortearCarta()">Iniciar Sorteio</button>
 
     <div id="card"></div>
 
@@ -339,84 +339,115 @@
     significado:"Hoje pode haver tendência à baixa motivação, falta de impulso ou vontade de pausar. Observe se o dia pede menos cobrança e movimentos menores."
   }
 ];
-        const botao = document.getElementById("drawButton");
-    const cardArea = document.getElementById("card");
+    const botao = document.getElementById("drawButton");
+const cardArea = document.getElementById("card");
 
-    function hojeChave(){
-      return new Date().toDateString();
+let embaralhando = false;
+let intervaloEmbaralhamento = null;
+
+function hojeChave(){
+  return new Date().toDateString();
+}
+
+function sortearCarta(){
+  const hoje = hojeChave();
+  const dataSalva = localStorage.getItem("dataCarta");
+  const cartaSalva = localStorage.getItem("cartaDoDia");
+
+  if(dataSalva === hoje && cartaSalva){
+    mostrarCarta(JSON.parse(cartaSalva), false);
+    return;
+  }
+
+  if(!embaralhando){
+    iniciarEmbaralhamento();
+  } else {
+    pararBaralho();
+  }
+}
+
+function iniciarEmbaralhamento(){
+  embaralhando = true;
+  botao.innerText = "Parar Baralho";
+  cardArea.style.display = "inline-block";
+  cardArea.classList.add("shuffle");
+
+  cardArea.innerHTML = `
+    <p class="meaning">Pare o baralho quando sentir que é o momento.</p>
+  `;
+
+  intervaloEmbaralhamento = setInterval(() => {
+    const cartaAleatoria = cartas[Math.floor(Math.random() * cartas.length)];
+    cardArea.innerHTML = `
+      <img src="${cartaAleatoria.imagem}" alt="Cartas embaralhando">
+      <p class="meaning">Pare o baralho quando sentir que é o momento.</p>
+    `;
+  }, 120);
+}
+
+function pararBaralho(){
+  embaralhando = false;
+  botao.disabled = true;
+  botao.innerText = "Revelando...";
+  clearInterval(intervaloEmbaralhamento);
+
+  const tempos = [160, 260, 420, 650];
+  let etapa = 0;
+
+  function desacelerar(){
+    const cartaAleatoria = cartas[Math.floor(Math.random() * cartas.length)];
+    cardArea.innerHTML = `
+      <img src="${cartaAleatoria.imagem}" alt="Carta desacelerando">
+    `;
+
+    if(etapa < tempos.length){
+      setTimeout(desacelerar, tempos[etapa]);
+      etapa++;
+    } else {
+      const cartaFinal = cartas[Math.floor(Math.random() * cartas.length)];
+
+      localStorage.setItem("cartaDoDia", JSON.stringify(cartaFinal));
+      localStorage.setItem("dataCarta", hojeChave());
+
+      setTimeout(() => mostrarCarta(cartaFinal, true), 700);
     }
+  }
 
-    function sortearCarta(){
-      const hoje = hojeChave();
-      const dataSalva = localStorage.getItem("dataCarta");
-      const cartaSalva = localStorage.getItem("cartaDoDia");
+  desacelerar();
+}
 
-      if(dataSalva === hoje && cartaSalva){
-        mostrarCarta(JSON.parse(cartaSalva), false);
-        return;
-      }
+function mostrarCarta(carta, nova){
+  cardArea.classList.remove("shuffle");
+  cardArea.style.display = "inline-block";
 
-      embaralhar();
-    }
+  cardArea.innerHTML = `
+    <img src="${carta.imagem}" alt="${carta.titulo}">
+    <h2>TENDÊNCIA DO DIA</h2>
+    <h2>${carta.titulo}</h2>
+    <p class="meaning">${carta.significado}</p>
 
-    function embaralhar(){
-      botao.disabled = true;
-      botao.innerText = "Embaralhando...";
-      cardArea.style.display = "inline-block";
-      cardArea.classList.add("shuffle");
+    <div class="services">
+      <h3>Deseja aprofundar a compreensão desta tendência?</h3>
 
-      let trocas = 0;
-      const totalTrocas = 24;
+      <h4>Psicoterapia Online</h4>
+      <p>Para ansiedade, relacionamentos, autoconhecimento, desenvolvimento pessoal e questões emocionais.</p>
+      <a href="https://onlineterapeuta.com.br" target="_blank" rel="noopener">onlineterapeuta.com.br</a>
 
-      const intervalo = setInterval(() => {
-        const cartaAleatoria = cartas[Math.floor(Math.random() * cartas.length)];
-        cardArea.innerHTML = `<img src="${cartaAleatoria.imagem}" alt="Carta embaralhando">`;
-        trocas++;
+      <h4>Leitura de Aura e Chakras</h4>
+      <p>Uma análise do seu campo energético, padrões emocionais, bloqueios e situações da sua vida que podem estar influenciando sua jornada atual.</p>
 
-        if(trocas >= totalTrocas){
-          clearInterval(intervalo);
+      <h4>Leitura Áurica Amorosa</h4>
+      <p>Para compreender o que pode estar dificultando sua vida amorosa, impedindo relacionamentos mais profundos ou criando padrões que se repetem.</p>
 
-          const cartaFinal = cartas[Math.floor(Math.random() * cartas.length)];
+      <h4>Leitura para Empresários e Empreendedores</h4>
+      <p>Insights sobre padrões, decisões, desafios e oportunidades relacionados à vida profissional, carreira e negócios.</p>
+      <a href="https://www.akashaprana.com" target="_blank" rel="noopener">akashaprana.com</a>
+    </div>
+  `;
 
-          localStorage.setItem("cartaDoDia", JSON.stringify(cartaFinal));
-          localStorage.setItem("dataCarta", hojeChave());
-
-          setTimeout(() => mostrarCarta(cartaFinal, true), 250);
-        }
-      }, 95);
-    }
-
-    function mostrarCarta(carta, nova){
-      cardArea.classList.remove("shuffle");
-      cardArea.style.display = "inline-block";
-
-      cardArea.innerHTML = `
-        <img src="${carta.imagem}" alt="${carta.titulo}">
-        <h2>${carta.titulo}</h2>
-        <p class="meaning">${carta.significado}</p>
-
-        <div class="services">
-         <h3>Deseja aprofundar a compreensão desta tendência?</h3>
-         
-          <h4>Psicoterapia Online</h4>
-          <p>Para ansiedade, relacionamentos, autoconhecimento, desenvolvimento pessoal e questões emocionais.</p>
-          <a href="https://onlineterapeuta.com.br" target="_blank" rel="noopener">onlineterapeuta.com.br</a>
-
-          <h4>Leitura de Aura e Chakras</h4>
-          <p>Uma análise do seu campo energético, padrões emocionais, bloqueios e situações da sua vida que podem estar influenciando sua jornada atual.</p>
-
-<h4>Leitura Áurica Amorosa</h4>
-<p>Para compreender o que pode estar dificultando sua vida amorosa, impedindo relacionamentos mais profundos ou criando padrões que se repetem.</p>
-          
-          <h4>Leitura para Empresários e Empreendedores</h4>
-          <p>Insights sobre padrões, decisões, desafios e oportunidades relacionados à vida profissional, carreira e negócios.</p>
-          <a href="https://www.akashaprana.com" target="_blank" rel="noopener">akashaprana.com</a>
-        </div>
-      `;
-
-      botao.disabled = false;
-      botao.innerText = nova ? "Carta de hoje revelada" : "Carta de hoje";
-    }
+  botao.disabled = false;
+  botao.style.display = "none";
+}
 
   </script>
 
