@@ -140,13 +140,46 @@
     opacity:1;
   }
 }
-    @media(max-width:480px){
-  body{ padding:22px 8px 32px; }
-  button{ font-size:18px; padding:15px 26px; }
-  #card{ margin-top:24px; padding:18px 8px 24px; }
-  #card img{ width:260px; max-width:88%; }
-  h2{ font-size:24px; }
-  .meaning{ font-size:16px; }
+   @media(max-width:480px){
+  body{
+    padding:18px 6px 28px;
+    overflow-x:hidden;
+  }
+
+  button{
+    font-size:18px;
+    padding:15px 24px;
+    max-width:92%;
+  }
+
+  #card{
+    margin-top:22px;
+    padding:16px 6px 22px;
+    border-radius:22px;
+    width:100%;
+    max-width:100%;
+    overflow:hidden;
+  }
+
+  #card img{
+    width:230px;
+    max-width:82%;
+    border-radius:14px;
+  }
+
+  h2{ font-size:23px; }
+
+  .meaning{
+    font-size:16px;
+    max-width:92%;
+  }
+
+  #shareButton{
+    font-size:18px !important;
+    padding:15px 24px !important;
+    max-width:92%;
+    display:inline-block;
+  }
 }
   </style>
 </head>
