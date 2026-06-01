@@ -162,6 +162,12 @@
 </p>
 
    <button id="drawButton" onclick="sortearCarta()">Iniciar Sorteio</button>
+    
+    <div id="shareMessage" style="display:none;margin:18px 0 10px 0;font-size:18px;line-height:1.6;">
+  <strong>Gostou do resultado?</strong><br>
+  Compartilhe com alguém e descubra qual será a tendência dela hoje.
+</div>
+    
     <button id="shareButton" onclick="compartilharCarta()" style="display:none;margin-top:12px;">
 Compartilhar Resultado
 </button>
@@ -642,7 +648,8 @@ ${carta.recomendacao ? `<p class="meaning" style="margin-top:18px;"><strong>Apro
   botao.disabled = false;
   botao.style.display = "none";
   
-  document.getElementById("shareButton").style.display = "inline-block";
+  document.getElementById("shareMessage").style.display = "block";
+document.getElementById("shareButton").style.display = "inline-block";
 }
 function compartilharCarta() {
   const titulo = document.querySelector("#card h2")?.innerText || "Tendência do Dia";
