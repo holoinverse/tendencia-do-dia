@@ -645,7 +645,24 @@ ${carta.recomendacao ? `<p class="meaning" style="margin-top:18px;"><strong>Apro
   document.getElementById("shareButton").style.display = "inline-block";
 }
 function compartilharCarta() {
-  alert("Botão funcionando");
+  const titulo = document.querySelector("#card h2")?.innerText || "Tendência do Dia";
+  const significado = document.querySelector("#card .meaning")?.innerText || "";
+
+  const texto =
+`${titulo}
+
+${significado}
+
+Veja sua Tendência do Dia:
+https://www.onlineterapeuta.com.br/tendencia-do-dia`;
+
+  const url = "https://wa.me/?text=" + encodeURIComponent(texto);
+
+  const janela = window.open(url, "_blank");
+
+  if (!janela) {
+    window.location.href = url;
+  }
 }
   </script>
 
