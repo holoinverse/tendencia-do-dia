@@ -652,6 +652,7 @@ ${carta.recomendacao ? `<p class="meaning" style="margin-top:18px;"><strong>Apro
 document.getElementById("shareButton").style.display = "inline-block";
 }
 function compartilharCarta() {
+
   const titulo = document.querySelector("#card h2")?.innerText || "Tendência do Dia";
 
   const texto =
@@ -662,13 +663,25 @@ ${titulo}
 Descubra a sua:
 https://www.onlineterapeuta.com.br/tendencia-do-dia`;
 
-  const url = "https://wa.me/?text=" + encodeURIComponent(texto);
+  if (navigator.share) {
 
-  const janela = window.open(url, "_blank");
+    navigator.share({
+      title: "Tendência do Dia",
+      text: texto,
+      url: "https://www.onlineterapeuta.com.br/tendencia-do-dia"
+    }).catch(() => {});
 
-  if (!janela) {
-    window.location.href = url;
+  } else {
+
+    const url = "https://wa.me/?text=" + encodeURIComponent(texto);
+
+    const janela = window.open(url, "_blank");
+
+    if (!janela) {
+      window.location.href = url;
+    }
   }
+}
 }
   </script>
 
