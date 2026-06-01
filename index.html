@@ -664,11 +664,7 @@ https://www.onlineterapeuta.com.br/tendencia-do-dia`;
 
   const url = "https://wa.me/?text=" + encodeURIComponent(texto);
 
-  const janela = window.open(url, "_blank");
-
-  if (!janela) {
-    window.location.href = url;
-  }
+  window.top.location.href = url;
 }
   </script>
 
