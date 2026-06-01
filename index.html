@@ -617,19 +617,21 @@ function iniciarEmbaralhamento(){
 
   cardArea.style.display = "inline-block";
   cardArea.innerHTML = `
-    <div style="
-      width:220px;
-      height:340px;
-      margin:0 auto 22px;
-      border-radius:22px;
-      background:linear-gradient(180deg,#efe3cc,#d8c19b);
-      border:3px solid #3a2d1f;
-      box-shadow:0 12px 28px rgba(58,45,31,0.22);
-      animation:pulseCard 0.55s infinite alternate;
-    "></div>
+<img src="verso.png" alt="Verso da carta" style="
+width:220px;
+margin:0 auto 22px;
+display:block;
+border-radius:22px;
+box-shadow:0 12px 28px rgba(58,45,31,0.22);
+animation:pulseCard 0.55s infinite alternate;
+">
 
-    <p class="meaning">Pare o baralho quando sentir que é o momento.</p>
-  `;
+<p class="meaning">
+Pare o baralho quando sentir que é o momento.
+</p>
+`;
+
+   
 }
 
 function pararBaralho(){
