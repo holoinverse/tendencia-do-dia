@@ -646,14 +646,13 @@ ${carta.recomendacao ? `<p class="meaning" style="margin-top:18px;"><strong>Apro
 }
 function compartilharCarta() {
   const titulo = document.querySelector("#card h2")?.innerText || "Tendência do Dia";
-  const significado = document.querySelector("#card .meaning")?.innerText || "";
 
   const texto =
-`${titulo}
+`Minha Tendência do Dia foi:
 
-${significado}
+${titulo}
 
-Veja sua Tendência do Dia:
+Veja a sua:
 https://www.onlineterapeuta.com.br/tendencia-do-dia`;
 
   const url = "https://wa.me/?text=" + encodeURIComponent(texto);
