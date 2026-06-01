@@ -388,7 +388,8 @@
   "cobranças externas",
   "urgência excessiva",
   "necessidade de limites"
-]
+],
+    recomendacao:"Momentos de pressão podem influenciar decisões, desempenho profissional e clareza estratégica."
   },
   {
     imagem:"23_confusao.png",
@@ -408,7 +409,8 @@
   "ruídos de comunicação",
   "interpretações diferentes",
   "necessidade de esclarecimento"
-]
+],
+    recomendacao:"Esta tendência pode estar ligada a ruídos emocionais, expectativas diferentes ou padrões de comunicação nos relacionamentos."
   },
   {
     imagem:"25_cansaço.png",
@@ -428,7 +430,8 @@
   "afastamentos temporários",
   "necessidade de espaço",
   "redução de contato"
-]
+],
+    recomendacao:"Questões ligadas a relacionamentos, aproximações ou afastamentos podem ganhar destaque nesta tendência."
   },
   {
     imagem:"27_impulsividade.png",
@@ -458,7 +461,8 @@
   "preocupações antecipadas",
   "necessidade de controle",
   "cenários imaginados"
-]
+],
+    recomendacao:"Esta tendência pode estar relacionada a padrões emocionais que merecem atenção e compreensão mais profunda."
   },
   {
     imagem:"30_insegurança.png",
@@ -468,7 +472,8 @@
   "dúvidas sobre si mesmo",
   "receio de errar",
   "busca por validação"
-]
+],
+    recomendacao:"Esta tendência pode apontar para dúvidas internas, autoconfiança fragilizada ou necessidade de apoio emocional mais estruturado."
   },
   {
     imagem:"31_mal-estar.png",
@@ -478,7 +483,8 @@
   "desconfortos emocionais",
   "ambientes desgastantes",
   "sinais de tensão"
-]
+],
+    recomendacao:"Quando o desconforto aparece, pode ser importante compreender o que está afetando seu estado emocional, energético ou relacional."
   },
   {
     imagem:"32_desorganizacao.png",
@@ -508,7 +514,8 @@
   "dificuldade de avançar",
   "resistências internas",
   "situações travadas"
-]
+],
+    recomendacao:"Às vezes um bloqueio não está apenas na situação, mas na forma como estamos percebendo ou sustentando determinada experiência."
   },
   {
     imagem:"35_esgotamento.png",
@@ -518,7 +525,8 @@
   "energia no limite",
   "necessidade de recuperação",
   "sinais de excesso"
-]
+],
+    recomendacao:"Quando a energia chega ao limite, compreender o que está drenando seus recursos internos pode ser tão importante quanto descansar."
   },
   {
     imagem:"36_desanimo.png",
@@ -608,7 +616,7 @@ function mostrarCarta(carta, nova){
     ${carta.observacoes ? carta.observacoes.map(item => `<li>${item}</li>`).join("") : ""}
   </ul>
 </div>
-
+${carta.recomendacao ? `<p class="meaning" style="margin-top:18px;"><strong>Para aprofundar:</strong> ${carta.recomendacao}</p>` : ""}
     <div class="services">
       <h3>Deseja explorar esta tendência com mais profundidade?</h3>
 
