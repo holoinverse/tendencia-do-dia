@@ -164,20 +164,17 @@
 
    <button id="drawButton" onclick="sortearCarta()">Iniciar Sorteio</button>
     
-   <div id="card"></div>
+  
 
 <div id="shareMessage" style="display:none;margin:18px 0 10px 0;font-size:18px;line-height:1.6;">
   <strong>Gostou do resultado?</strong><br>
   Compartilhe com alguém e descubra qual será a tendência dela hoje.
 </div>
-
-<button id="shareButton" onclick="compartilharCarta()" style="display:none;margin-top:12px;">
-Compartilhar Resultado
-</button>
     
-    <button id="shareButton" onclick="compartilharCarta()" style="display:none;margin-top:12px;">
-Compartilhar Resultado
-</button>
+    <a id="shareButton" href="#" target="_blank" rel="noopener"
+style="display:none;margin-top:12px;padding:20px 42px;border-radius:18px;background:#3a2d1f;color:white;font-size:24px;font-weight:bold;font-family:Georgia,serif;text-decoration:none;box-shadow:0 12px 28px rgba(58,45,31,0.18);">
+  Compartilhar Resultado
+</a>
 
     <div id="card"></div>
 
@@ -656,23 +653,19 @@ ${carta.recomendacao ? `<p class="meaning" style="margin-top:18px;"><strong>Apro
   botao.style.display = "none";
   
   document.getElementById("shareMessage").style.display = "block";
-document.getElementById("shareButton").style.display = "inline-block";
-}
-function compartilharCarta() {
-  const titulo = document.querySelector("#card h2")?.innerText || "Tendência do Dia";
-
-  const texto =
+const textoCompartilhar =
 `Hoje minha carta foi:
 
-${titulo}
+${carta.titulo}
 
 Descubra a sua:
 https://www.onlineterapeuta.com.br/tendencia-do-dia`;
 
-  const url = "https://wa.me/?text=" + encodeURIComponent(texto);
-
-  window.top.location.href = url;
+const shareButton = document.getElementById("shareButton");
+shareButton.href = "https://wa.me/?text=" + encodeURIComponent(textoCompartilhar);
+shareButton.style.display = "inline-block";
 }
+
   </script>
 
 </body>
