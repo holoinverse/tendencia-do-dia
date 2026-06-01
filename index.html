@@ -168,7 +168,7 @@ Compartilhar Resultado
 
     <div id="card"></div>
 
-    <p class="note">Uma carta por dia será mantida neste dispositivo.</p>
+    <p class="note">Será mantida neste dispositivo,uma carta por dia.</p>
   </div>
 
   <script>
@@ -641,8 +641,36 @@ ${carta.recomendacao ? `<p class="meaning" style="margin-top:18px;"><strong>Apro
 
   botao.disabled = false;
   botao.style.display = "none";
+  
+  document.getElementById("shareButton").style.display = "inline-block";
 }
+function compartilharCarta() {
 
+  const titulo = document.querySelector("#card h2")?.innerText || "Tendência do Dia";
+
+  const significado = document.querySelector("#card .meaning")?.innerText || "";
+
+  const texto =
+`${titulo}
+
+${significado}
+
+https://www.onlineterapeuta.com.br/tendencia-do-dia`;
+
+  if (navigator.share) {
+
+    navigator.share({
+      title: titulo,
+      text: texto
+    });
+
+  } else {
+
+    navigator.clipboard.writeText(texto);
+
+    alert("Resultado copiado para a área de transferência.");
+  }
+}
   </script>
 
 </body>
