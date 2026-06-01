@@ -130,7 +130,16 @@
       font-size:14px;
       opacity:0.68;
     }
-
+@keyframes pulseCard{
+  from{
+    transform:translateY(0) rotate(-1deg);
+    opacity:0.82;
+  }
+  to{
+    transform:translateY(-8px) rotate(1deg);
+    opacity:1;
+  }
+}
     @media(max-width:480px){
       body{ padding:32px 12px 44px; }
       button{ font-size:21px; padding:18px 34px; }
@@ -342,11 +351,10 @@
     significado:"Hoje pode haver tendência à baixa motivação, falta de impulso ou vontade de pausar. Observe se o dia pede menos cobrança e movimentos menores."
   }
 ];
-    const botao = document.getElementById("drawButton");
+   const botao = document.getElementById("drawButton");
 const cardArea = document.getElementById("card");
 
 let embaralhando = false;
-let intervaloEmbaralhamento = null;
 
 function hojeChave(){
   return new Date().toDateString();
@@ -371,52 +379,38 @@ function sortearCarta(){
 
 function iniciarEmbaralhamento(){
   embaralhando = true;
-  botao.innerText = "Parar Baralho";
-  cardArea.style.display = "inline-block";
-  cardArea.classList.add("shuffle");
 
+  botao.innerText = "Parar Baralho";
+  botao.disabled = false;
+
+  cardArea.style.display = "inline-block";
   cardArea.innerHTML = `
+    <div style="
+      width:220px;
+      height:340px;
+      margin:0 auto 22px;
+      border-radius:22px;
+      background:linear-gradient(180deg,#efe3cc,#d8c19b);
+      border:3px solid #3a2d1f;
+      box-shadow:0 12px 28px rgba(58,45,31,0.22);
+      animation:pulseCard 0.55s infinite alternate;
+    "></div>
+
     <p class="meaning">Pare o baralho quando sentir que é o momento.</p>
   `;
-
-  intervaloEmbaralhamento = setInterval(() => {
-    const cartaAleatoria = cartas[Math.floor(Math.random() * cartas.length)];
-    cardArea.innerHTML = `
-      <img src="${cartaAleatoria.imagem}" alt="Cartas embaralhando">
-      <p class="meaning">Pare o baralho quando sentir que é o momento.</p>
-    `;
-  }, 120);
 }
 
 function pararBaralho(){
   embaralhando = false;
   botao.disabled = true;
   botao.innerText = "Revelando...";
-  clearInterval(intervaloEmbaralhamento);
 
-  const tempos = [160, 260, 420, 650];
-  let etapa = 0;
+  const cartaFinal = cartas[Math.floor(Math.random() * cartas.length)];
 
-  function desacelerar(){
-    const cartaAleatoria = cartas[Math.floor(Math.random() * cartas.length)];
-    cardArea.innerHTML = `
-      <img src="${cartaAleatoria.imagem}" alt="Carta desacelerando">
-    `;
+  localStorage.setItem("cartaDoDia", JSON.stringify(cartaFinal));
+  localStorage.setItem("dataCarta", hojeChave());
 
-    if(etapa < tempos.length){
-      setTimeout(desacelerar, tempos[etapa]);
-      etapa++;
-    } else {
-      const cartaFinal = cartas[Math.floor(Math.random() * cartas.length)];
-
-      localStorage.setItem("cartaDoDia", JSON.stringify(cartaFinal));
-      localStorage.setItem("dataCarta", hojeChave());
-
-      setTimeout(() => mostrarCarta(cartaFinal, true), 700);
-    }
-  }
-
-  desacelerar();
+  setTimeout(() => mostrarCarta(cartaFinal, true), 900);
 }
 
 function mostrarCarta(carta, nova){
@@ -425,13 +419,12 @@ function mostrarCarta(carta, nova){
 
   cardArea.innerHTML = `
     <img src="${carta.imagem}" alt="${carta.titulo}">
-    <h2>TENDÊNCIA DO DIA</h2>
     <h2>${carta.titulo}</h2>
     <p class="meaning">${carta.significado}</p>
 
     <div class="services">
       <h3>Deseja explorar esta tendência com mais profundidade?</h3>
-      
+
       <h4>Psicoterapia Online</h4>
       <p>Para ansiedade, relacionamentos, autoconhecimento, desenvolvimento pessoal e questões emocionais.</p>
       <a href="https://onlineterapeuta.com.br" target="_blank" rel="noopener">onlineterapeuta.com.br</a>
