@@ -788,7 +788,67 @@ function gerarResumoSemanal(){
   </div>
   `;
 }
-    
+
+    function gerarResumoMensal(){
+
+  const historico = JSON.parse(
+    localStorage.getItem("historicoCartas") || "[]"
+  ).slice(-30);
+
+  if(historico.length < 7){
+    return "";
+  }
+
+  const contagem = {};
+
+  Object.keys(grupos).forEach(grupo => {
+    contagem[grupo] = 0;
+  });
+
+  historico.forEach(item => {
+    Object.entries(grupos).forEach(([grupo, cartas]) => {
+      if(cartas.includes(item.titulo)){
+        contagem[grupo]++;
+      }
+    });
+  });
+
+  let grupoPrincipal = Object.keys(contagem)[0];
+
+  Object.keys(contagem).forEach(grupo => {
+    if(contagem[grupo] > contagem[grupoPrincipal]){
+      grupoPrincipal = grupo;
+    }
+  });
+
+  const nomes = {
+    clareza: "CLAREZA",
+    mudanca: "MUDANÇA",
+    conexao: "CONEXÃO",
+    tensao: "TENSÃO",
+    desgaste: "DESGASTE",
+    inseguranca: "INSEGURANÇA"
+  };
+
+  const textos = {
+    clareza: "Ao longo deste ciclo, temas ligados à observação, percepção e compreensão apareceram com maior frequência.",
+    mudanca: "Ao longo deste ciclo, temas ligados a movimento, adaptação e transição apareceram com maior frequência.",
+    conexao: "Ao longo deste ciclo, temas ligados a apoio, vínculos e trocas significativas apareceram com maior frequência.",
+    tensao: "Ao longo deste ciclo, temas ligados a pressão, conflitos ou reorganização apareceram com maior frequência.",
+    desgaste: "Ao longo deste ciclo, temas ligados a cansaço, recuperação e preservação de energia apareceram com maior frequência.",
+    inseguranca: "Ao longo deste ciclo, temas ligados a dúvidas, bloqueios e instabilidade interna apareceram com maior frequência."
+  };
+
+  return `
+  <div style="max-width:560px;margin:22px auto;padding:18px;border-radius:18px;background:rgba(255,255,255,0.24);">
+    <strong>Tendência Predominante do Mês</strong>
+    <h2 style="margin:14px 0 8px;font-size:24px;">${nomes[grupoPrincipal]}</h2>
+    <p style="margin-top:10px;">
+      ${textos[grupoPrincipal]}
+    </p>
+  </div>
+  `;
+}
 function mostrarCarta(carta, nova){
   cardArea.classList.remove("shuffle");
   cardArea.style.display = "inline-block";
@@ -846,6 +906,7 @@ const historicoHTML = historico.length > 1
 
 cardArea.innerHTML += historicoHTML;
   cardArea.innerHTML += gerarResumoSemanal();
+  cardArea.innerHTML += gerarResumoMensal();
   
   document.getElementById("shareMessage").style.display = "block";
 const textoCompartilhar =
