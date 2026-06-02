@@ -643,6 +643,7 @@ function pararBaralho(){
 
   localStorage.setItem("cartaDoDia", JSON.stringify(cartaFinal));
   localStorage.setItem("dataCarta", hojeChave());
+  salvarHistorico(cartaFinal);
 
  cardArea.style.transition = "opacity 0.45s ease";
 cardArea.style.opacity = "0";
@@ -658,6 +659,23 @@ setTimeout(() => {
 }, 450);
 }
 
+function salvarHistorico(carta){
+  const hoje = hojeChave();
+  const historico = JSON.parse(localStorage.getItem("historicoCartas") || "[]");
+
+  const jaExisteHoje = historico.some(item => item.data === hoje);
+
+  if(!jaExisteHoje){
+    historico.push({
+      data: hoje,
+      titulo: carta.titulo
+    });
+  }
+
+  const ultimos30 = historico.slice(-30);
+  localStorage.setItem("historicoCartas", JSON.stringify(ultimos30));
+}
+    
 function mostrarCarta(carta, nova){
   cardArea.classList.remove("shuffle");
   cardArea.style.display = "inline-block";
