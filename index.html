@@ -644,13 +644,17 @@ function pararBaralho(){
   localStorage.setItem("cartaDoDia", JSON.stringify(cartaFinal));
   localStorage.setItem("dataCarta", hojeChave());
 
- cardArea.style.opacity = "0";
+ cardArea.style.transition = "transform 0.45s ease, opacity 0.45s ease";
+cardArea.style.transform = "rotateY(90deg)";
+cardArea.style.opacity = "0.3";
 
 setTimeout(() => {
   mostrarCarta(cartaFinal, true);
-  cardArea.style.opacity = "0";
+  cardArea.style.transform = "rotateY(-90deg)";
+  cardArea.style.opacity = "0.3";
 
   setTimeout(() => {
+    cardArea.style.transform = "rotateY(0deg)";
     cardArea.style.opacity = "1";
   }, 80);
 
@@ -660,7 +664,7 @@ setTimeout(() => {
 function mostrarCarta(carta, nova){
   cardArea.classList.remove("shuffle");
   cardArea.style.display = "inline-block";
-  cardArea.style.transition = "opacity 0.45s ease";
+ cardArea.style.transition = "transform 0.45s ease, opacity 0.45s ease";
 
   cardArea.innerHTML = `
     <img src="${carta.imagem}" alt="${carta.titulo}">
