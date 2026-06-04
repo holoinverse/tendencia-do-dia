@@ -594,8 +594,8 @@ function hojeChave(){
 
 function sortearCarta(){
   const hoje = hojeChave();
-  const dataSalva = localStorage.getItem("dataCarta");
-  const cartaSalva = localStorage.getItem("cartaDoDia");
+  const dataSalva = localStorage.getItem("dataCartaPT");
+  const cartaSalva = localStorage.getItem("cartaDoDiaPT");
 
   if(dataSalva === hoje && cartaSalva){
     mostrarCarta(JSON.parse(cartaSalva), false);
@@ -641,8 +641,8 @@ function pararBaralho(){
 
   const cartaFinal = cartas[Math.floor(Math.random() * cartas.length)];
 
-  localStorage.setItem("cartaDoDia", JSON.stringify(cartaFinal));
-  localStorage.setItem("dataCarta", hojeChave());
+  localStorage.setItem("cartaDoDiaPT", JSON.stringify(cartaFinal));
+  localStorage.setItem("dataCartaPT", hojeChave());
   salvarHistorico(cartaFinal);
 
  cardArea.style.transition = "opacity 0.45s ease";
@@ -705,7 +705,7 @@ const grupos = {
     
 function salvarHistorico(carta){
   const hoje = hojeChave();
-  const historico = JSON.parse(localStorage.getItem("historicoCartas") || "[]");
+  const historico = JSON.parse(localStorage.getItem("historicoCartasPT") || "[]");
 
   const jaExisteHoje = historico.some(item => item.data === hoje);
 
@@ -717,13 +717,13 @@ function salvarHistorico(carta){
   }
 
   const ultimos30 = historico.slice(-30);
-  localStorage.setItem("historicoCartas", JSON.stringify(ultimos30));
+  localStorage.setItem("historicoCartasPT", JSON.stringify(ultimos30));
 }
 
 function gerarResumoSemanal(){
 
   const historico = JSON.parse(
-    localStorage.getItem("historicoCartas") || "[]"
+    localStorage.getItem("historicoCartasPT") || "[]"
   ).slice(-7);
 
   if(historico.length < 3){
@@ -792,7 +792,7 @@ function gerarResumoSemanal(){
     function gerarResumoMensal(){
 
   const historico = JSON.parse(
-    localStorage.getItem("historicoCartas") || "[]"
+    localStorage.getItem("historicoCartasPT") || "[]"
   ).slice(-30);
 
   if(historico.length < 7){
@@ -888,7 +888,7 @@ ${carta.recomendacao ? `<p class="meaning" style="margin-top:18px;"><strong>Apro
   botao.disabled = false;
   botao.style.display = "none";
 
-const historico = JSON.parse(localStorage.getItem("historicoCartas") || "[]").slice(-7);
+const historico = JSON.parse(localStorage.getItem("historicoCartasPT") || "[]").slice(-7);
 
 const historicoHTML = historico.length > 1
   ? `
