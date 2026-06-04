@@ -930,6 +930,7 @@ cardArea.innerHTML += historicoHTML;
   cardArea.innerHTML += gerarResumoMensal();
   
   document.getElementById("shareMessage").style.display = "block";
+
 const pontos = carta.observacoes
   ? carta.observacoes.map(item => `• ${item}`).join("\n")
   : "";
@@ -943,7 +944,13 @@ Observe especialmente:
 ${pontos}
 
 Descubra qual tendência pode estar presente no seu dia:
-https://www.onlineterapeuta.com.br/tendencia-do-dia`;
+https://www.onlineterapeuta.com.br/tendencia-do-dia
+
+Atendimentos e leituras realizados online, à distância:
+https://www.onlineterapeuta.com.br
+
+Leituras de Aura e Chakras:
+https://www.akashaprana.com`;
 
 const shareButton = document.getElementById("shareButton");
 shareButton.href = "https://wa.me/?text=" + encodeURIComponent(textoCompartilhar);
