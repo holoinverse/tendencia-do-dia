@@ -930,10 +930,17 @@ cardArea.innerHTML += historicoHTML;
   cardArea.innerHTML += gerarResumoMensal();
   
   document.getElementById("shareMessage").style.display = "block";
+const pontos = carta.observacoes
+  ? carta.observacoes.map(item => `• ${item}`).join("\n")
+  : "";
+
 const textoCompartilhar =
 `Hoje minha carta foi:
 
 ${carta.titulo}
+
+Observe especialmente:
+${pontos}
 
 Descubra qual tendência pode estar presente no seu dia:
 https://www.onlineterapeuta.com.br/tendencia-do-dia`;
