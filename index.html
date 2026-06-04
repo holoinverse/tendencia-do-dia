@@ -810,7 +810,8 @@ function gerarResumoSemanal(){
   const cartaPrincipal = Object.keys(contagem).reduce((a,b)=>
     contagem[a] > contagem[b] ? a : b
   );
-
+const ocorrencias = contagem[cartaPrincipal];
+      
   const densas = [
     "PRESSÃO","SOBRECARGA","CONFUSÃO","DESENTENDIMENTO",
     "CANSAÇO","DISTÂNCIA","IMPULSIVIDADE","FRUSTRAÇÃO",
@@ -841,7 +842,7 @@ function gerarResumoSemanal(){
 
   let texto = "";
 
-  texto += `Ao longo dos últimos 30 dias, o tema mais recorrente foi ${cartaPrincipal}. `;
+  texto += `Ao longo dos últimos 30 dias, a carta mais recorrente foi ${cartaPrincipal}, aparecendo ${ocorrencias} vez${ocorrencias > 1 ? "es" : ""}. `;
 
   if(qtdDensas >= qtdExpansivas && qtdDensas >= qtdReflexivas){
     texto += "Temas ligados a desafios, desgaste, pressão ou necessidade de reorganização apareceram com frequência ao longo deste período. ";
