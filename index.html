@@ -639,7 +639,7 @@ function pararBaralho(){
   botao.disabled = true;
   botao.innerText = "Revelando...";
 
- const cartaFinal = cartas[27];
+const cartaFinal = cartas[Math.floor(Math.random() * cartas.length)];
 
   localStorage.setItem("cartaDoDiaPT", JSON.stringify(cartaFinal));
   localStorage.setItem("dataCartaPT", hojeChave());
