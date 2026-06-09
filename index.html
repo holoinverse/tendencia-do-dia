@@ -598,9 +598,11 @@ function sortearCarta(){
   const cartaSalva = localStorage.getItem("cartaDoDiaPT");
 
   if(dataSalva === hoje && cartaSalva){
-    mostrarCarta(JSON.parse(cartaSalva), false);
-    return;
-  }
+  const cartaAtual = JSON.parse(cartaSalva);
+  salvarHistorico(cartaAtual);
+  mostrarCarta(cartaAtual, false);
+  return;
+}
 
   if(!embaralhando){
     iniciarEmbaralhamento();
