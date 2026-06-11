@@ -196,30 +196,7 @@
       
 </p>
 
-<div id="mobileVersionLink" style="display:none;">
-  <p style="font-size:14px;opacity:0.75;max-width:560px;margin:0 auto 18px;">
-    Usando um dispositivo móvel?<br><br>
-    Para uma experiência mais completa, incluindo histórico e resumos,
-    recomendamos abrir a versão direta.
-  </p>
-
-  <a href="https://holoinverse.github.io/tendencia-do-dia/"
-     target="_blank"
-     style="
-       display:inline-block;
-       margin-bottom:20px;
-       padding:12px 24px;
-       border-radius:12px;
-       background:#3a2d1f;
-       color:white;
-       text-decoration:none;
-       font-weight:bold;
-     ">
-    Abrir Versão Recomendada
-  </a>
-</div>
-
-<button id="drawButton" onclick="sortearCarta()">Iniciar Sorteio</button>
+<button id="drawButton" onclick="iniciarExperiencia()">Iniciar Sorteio</button>
 
 <div id="card"></div>
 
@@ -609,9 +586,6 @@ style="display:none;margin-top:12px;padding:20px 42px;border-radius:18px;backgro
 ];
 const botao = document.getElementById("drawButton");
 const cardArea = document.getElementById("card");
-    if(window.innerWidth <= 768){
-  document.getElementById("mobileVersionLink").style.display = "block";
-}
 
 let embaralhando = false;
 
@@ -619,6 +593,17 @@ function hojeChave(){
   return new Date().toDateString();
 }
 
+function iniciarExperiencia(){
+
+  if(window.innerWidth <= 768){
+    window.location.href =
+      "https://holoinverse.github.io/tendencia-do-dia/";
+    return;
+  }
+
+  sortearCarta();
+}
+    
 function sortearCarta(){
   const hoje = hojeChave();
   const dataSalva = localStorage.getItem("dataCartaPT");
