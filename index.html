@@ -985,6 +985,14 @@ shareButton.href = "https://wa.me/?text=" + encodeURIComponent(textoCompartilhar
 shareButton.style.display = "inline-block";
 }
 
+window.addEventListener("load", function(){
+  const params = new URLSearchParams(window.location.search);
+
+  if(params.get("mobile") === "1"){
+    sortearCarta();
+  }
+});
+    
   </script>
 
 </body>
