@@ -196,7 +196,27 @@
       
 </p>
 
-<button id="drawButton" onclick="iniciarExperiencia()">Iniciar Sorteio</button>
+<a id="drawButton"
+  href="https://holoinverse.github.io/tendencia-do-dia/?mobile=1"
+  target="_blank"
+  onclick="if(new URLSearchParams(window.location.search).get('mobile') === '1' || !/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)){ event.preventDefault(); sortearCarta(); }"
+  style="
+    display:inline-block;
+    margin-top:16px;
+    padding:20px 42px;
+    border:none;
+    border-radius:18px;
+    background:#3a2d1f;
+    color:white;
+    font-size:24px;
+    font-weight:bold;
+    cursor:pointer;
+    font-family:Georgia, serif;
+    box-shadow:0 12px 28px rgba(58,45,31,0.18);
+    text-decoration:none;
+  ">
+  Iniciar Sorteio
+</a>
 
 <div id="card"></div>
 
