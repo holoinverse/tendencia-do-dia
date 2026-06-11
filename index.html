@@ -929,29 +929,31 @@ const historicoHTML = historico.length >= 1
   `;
 
 cardArea.innerHTML += historicoHTML;
+if(window.innerWidth <= 768){
+  cardArea.innerHTML += `
+    <div style="max-width:560px;margin:18px auto 0;padding:16px;border-radius:18px;background:rgba(255,255,255,0.22);">
+      <p style="font-size:14px;line-height:1.6;opacity:0.78;margin:0 0 12px;">
+        Está usando um dispositivo móvel?<br><br>
+        Para uma experiência mais completa, incluindo histórico e resumos, abra a versão completa.
+      </p>
 
-<div style="max-width:560px;margin:18px auto 0;padding:16px;border-radius:18px;background:rgba(255,255,255,0.22);">
-  <p style="font-size:14px;line-height:1.6;opacity:0.78;margin:0 0 12px;">
-    Está usando um dispositivo móvel?<br><br>
-    Para uma experiência mais completa, incluindo histórico e resumos, abra a versão completa.
-  </p>
-
-  <a href="https://holoinverse.github.io/tendencia-do-dia/"
-     target="_blank"
-     style="
-       display:inline-block;
-       padding:12px 24px;
-       border-radius:12px;
-       background:#3a2d1f;
-       color:white;
-       text-decoration:none;
-       font-weight:bold;
-       font-size:15px;
-     ">
-    Abrir Versão Completa
-  </a>
-</div>
-  
+      <a href="https://holoinverse.github.io/tendencia-do-dia/"
+         target="_blank"
+         style="
+           display:inline-block;
+           padding:12px 24px;
+           border-radius:12px;
+           background:#3a2d1f;
+           color:white;
+           text-decoration:none;
+           font-weight:bold;
+           font-size:15px;
+         ">
+         Abrir Versão Completa
+      </a>
+    </div>
+  `;
+}
   cardArea.innerHTML += gerarResumoSemanal();
   cardArea.innerHTML += gerarResumoMensal();
   
