@@ -286,7 +286,7 @@ button,
   Iniciar Sorteio
 </a>
 
-    <div id="installBox" style="
+<div id="installBox" onclick="installApp()" style="
 display:none;
 max-width:420px;
 margin:16px auto 0;
@@ -1080,6 +1080,37 @@ window.addEventListener("load", function(){
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('service-worker.js');
 }
+
+let deferredPrompt;
+
+window.addEventListener("beforeinstallprompt", (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+});
+
+function installApp(){
+  if(deferredPrompt){
+    deferredPrompt.prompt();
+    deferredPrompt = null;
+  } else {
+    alert("No iPhone, toque em Compartilhar e escolha Adicionar à Tela de Início.");
+  }
+}
+
+window.addEventListener("load", () => {
+  const installBox = document.getElementById("installBox");
+  const params = new URLSearchParams(window.location.search);
+
+  const isStandalone =
+    window.matchMedia("(display-mode: standalone)").matches
+    || window.navigator.standalone;
+
+  const shouldShowInstall =
+    params.get("mobile") === "1" && !isStandalone;
+
+  installBox.style.display = shouldShowInstall ? "block" : "none";
+});
+    
 </script>
   
 </body>
