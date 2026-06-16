@@ -286,7 +286,9 @@ button,
   Iniciar Sorteio
 </a>
 
-<div id="installBox" style="
+<div id="installBox"
+onclick="showInstallModal()"
+style="
 max-width:360px;
 margin:18px auto 0;
 padding:12px 14px;
@@ -296,11 +298,11 @@ font-size:13px;
 line-height:1.45;
 color:#5c5043;
 text-align:left;
+cursor:pointer;
 ">
 
-<strong>📱 Instale o app no iPhone</strong><br>
-Toque em <strong>Compartilhar (□↑)</strong> na barra inferior do Safari, role as opções e escolha <strong>Adicionar à Tela de Início</strong>.
-
+<strong>📱 Instale este app</strong><br>
+Adicionar à Tela de Início
 </div>
 
 <div id="card"></div>
@@ -691,6 +693,14 @@ style="display:none;margin-top:12px;padding:20px 42px;border-radius:18px;backgro
 ];
 const botao = document.getElementById("drawButton");
 const cardArea = document.getElementById("card");
+
+    function showInstallModal(){
+  document.getElementById("installModal").style.display = "flex";
+}
+
+function closeInstallModal(){
+  document.getElementById("installModal").style.display = "none";
+}
 
 let embaralhando = false;
 
@@ -1110,6 +1120,54 @@ window.addEventListener("load", () => {
 });
     
 </script>
+
+<div id="installModal" style="
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.45);
+z-index:9999;
+align-items:center;
+justify-content:center;
+padding:24px;
+">
+  <div style="
+  max-width:420px;
+  background:#f8f1e4;
+  color:#3a2d1f;
+  border-radius:28px;
+  padding:30px 26px;
+  text-align:center;
+  font-family:Georgia,serif;
+  box-shadow:0 20px 60px rgba(0,0,0,0.25);
+  ">
+    <h2 style="margin-top:0;">📱 Instalar no iPhone</h2>
+
+    <p style="font-size:18px;line-height:1.5;">
+      Adicione Tendência do Dia à sua Tela de Início e acesse sua carta diária com um toque.
+    </p>
+
+    <p style="font-size:17px;line-height:1.5;text-align:left;">
+      <strong>iPhone</strong><br>
+      Toque no botão Compartilhar (□↑).<br>
+      Depois escolha <strong>Adicionar à Tela de Início</strong>.
+    </p>
+
+    <button onclick="closeInstallModal()" style="
+    margin-top:18px;
+    padding:14px 30px;
+    border:none;
+    border-radius:16px;
+    background:#3a2d1f;
+    color:white;
+    font-size:18px;
+    font-weight:bold;
+    font-family:Georgia,serif;
+    ">
+      Entendi
+    </button>
+  </div>
+</div>
   
 </body>
 </html>
