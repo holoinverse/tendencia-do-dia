@@ -187,6 +187,26 @@ button,
   }
 }
   </style>
+
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({
+      appId: "b18fc7c2-0555-4b9b-839c-4da96a677b59",
+
+      serviceWorkerPath: "/tendencia-do-dia/OneSignalSDKWorker.js",
+      serviceWorkerUpdaterPath: "/tendencia-do-dia/OneSignalSDKUpdaterWorker.js",
+
+      serviceWorkerParam: {
+        scope: "/tendencia-do-dia/"
+      }
+    });
+  });
+</script>
+  
 </head>
 
 <body>
