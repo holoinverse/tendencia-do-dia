@@ -166,6 +166,14 @@ button,
   max-width:92%;
 }
 
+.returnHomeButton{
+  font-size:13px !important;
+  padding:8px 14px !important;
+  width:auto !important;
+  max-width:none !important;
+  border-radius:12px !important;
+}
+     
   #card{
     margin-top:22px;
     padding:16px 6px 22px;
@@ -333,7 +341,51 @@ Adicionar Tendência do Dia à sua Tela de Início
 style="display:none;margin-top:12px;padding:20px 42px;border-radius:18px;background:#3a2d1f;color:white;font-size:24px;font-weight:bold;font-family:Georgia,serif;text-decoration:none;box-shadow:0 12px 28px rgba(58,45,31,0.18);">
   Compartilhar Resultado
 </a>
+<br>
 
+<button
+id="homeButton"
+class="returnHomeButton"
+onclick="returnHome()"
+style="
+display:none;
+margin-top:18px;
+padding:12px 22px;
+border:none;
+border-radius:14px;
+background:rgba(58,45,31,0.85);
+color:white;
+font-size:16px;
+font-family:Georgia, serif;
+font-weight:bold;
+cursor:pointer;
+">
+← Voltar ao Início
+</button>
+
+    
+<br>
+
+<button
+id="homeButton"
+class="returnHomeButton"
+onclick="returnHome()"
+style="
+display:none;
+margin-top:18px;
+padding:12px 22px;
+border:none;
+border-radius:14px;
+background:rgba(58,45,31,0.85);
+color:white;
+font-size:16px;
+font-family:Georgia, serif;
+font-weight:bold;
+cursor:pointer;
+">
+← Voltar ao Início
+</button>
+    
 <p class="note">Sorteie apenas uma carta por dia.</p>
   </div>
 
@@ -1092,6 +1144,12 @@ https://www.akashaprana.com/servicos`;
 const shareButton = document.getElementById("shareButton");
 shareButton.href = "https://wa.me/?text=" + encodeURIComponent(textoCompartilhar);
 shareButton.style.display = "inline-block";
+document.getElementById("homeButton").style.display = "inline-block";
+}
+
+    function returnHome(){
+  window.location.href =
+  "https://holoinverse.github.io/tendencia-do-dia/";
 }
 
 window.addEventListener("load", function(){
