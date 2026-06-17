@@ -365,7 +365,7 @@ cursor:pointer;
 
 <br>
     
-<p class="note">Sorteie apenas uma carta por dia.</p>
+<p id="dailyNote" class="note">Sorteie apenas uma carta por dia.</p>
   </div>
 
   <script>
@@ -1124,6 +1124,8 @@ const shareButton = document.getElementById("shareButton");
 shareButton.href = "https://wa.me/?text=" + encodeURIComponent(textoCompartilhar);
 shareButton.style.display = "inline-block";
 document.getElementById("homeButton").style.display = "inline-block";
+document.getElementById("dailyNote").innerText =
+  "Uma nova carta estará disponível amanhã.";
 }
 
     function returnHome(){
