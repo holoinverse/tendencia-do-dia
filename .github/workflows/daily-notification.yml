@@ -20,8 +20,14 @@ jobs:
           --data '{
             "app_id":"${{ secrets.ONESIGNAL_APP_ID }}",
             "included_segments":["Portuguese Users"],
-            "headings":{"pt":"Tendência do Dia"},
-            "contents":{"pt":"Reserve um momento para descobrir a tendência do seu dia."},
+            "headings":{
+  "en":"Tendência do Dia",
+  "pt":"Tendência do Dia"
+},
+"contents":{
+  "en":"Reserve um momento para descobrir a tendência do seu dia.",
+  "pt":"Reserve um momento para descobrir a tendência do seu dia."
+},
             "url":"https://holoinverse.github.io/tendencia-do-dia/",
             "delayed_option":"timezone",
             "delivery_time_of_day":"08:30"
